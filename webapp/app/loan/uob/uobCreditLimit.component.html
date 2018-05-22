@@ -1,0 +1,454 @@
+<div class="container">
+    <div class="text-center">
+        <h1>MARSH LIS 5 LIMIT FORM</h1>
+    </div>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm" show-validation>
+        <div class="card" style="min-width: 20rem;">
+            <h4 class="card-header bg-primary text-white">UOB POLICY</h4>
+            <div class="card-body">
+                <div>
+                    <label class="form-control-label">Policy No:</label>
+                    <input type="text" #uobPolicyNo class="form-control" />
+                </div>
+
+                <div class="info">
+                    <p>
+                        <strong>NOTE!</strong>
+                        Please note that this Limit Form is governed by UOl's LIS 5 policy terms and conditions. This Limit Form will only be processed
+                        upon full completion of the form.
+                    </p>
+                    <p>
+                        <strong>IMPORTANT NOTE:</strong>
+                        Please also include in your submission the UOB's internal LISS checklist on Eligibility Criteria (signed copy) for cases
+                        on New, Renewal and Increase Limit. For Borrowers which do not qualify the LIS 5 Eligibility Criteria,
+                        please do not submit a limit request for them as premium subsidy and insurance coverage are not applicable
+                        to them.
+                    </p>
+                </div>
+                <h5 class="card-title">For Existing LIS 5 Limits</h5>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_toLIS5Insurer">To LIS5 Insurer</label>
+                    <input type="text" class="form-control" name="toLIS5Insurer" id="field_toLIS5Insurer" [(ngModel)]="uobCreditLimit.toLIS5Insurer"
+                        required/>
+                    <div [hidden]="!(editForm.controls.toLIS5Insurer?.dirty && editForm.controls.toLIS5Insurer?.invalid)">
+                        <small class="form-text text-danger" [hidden]="!editForm.controls.toLIS5Insurer?.errors?.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_requesterName">Requester Name</label>
+                    <input type="text" class="form-control" name="requesterName" id="field_requesterName" [(ngModel)]="uobCreditLimit.requesterName"
+                        required/>
+                    <div [hidden]="!(editForm.controls.requesterName?.dirty && editForm.controls.requesterName?.invalid)">
+                        <small class="form-text text-danger" [hidden]="!editForm.controls.requesterName?.errors?.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_submissionDate">Submission Date</label>
+                    <div class="input-group">
+                        <input id="field_submissionDate" type="text" class="form-control" name="submissionDate" ngbDatepicker #submissionDateDp="ngbDatepicker"
+                            [(ngModel)]="uobCreditLimit.submissionDate" required/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-secondary" (click)="submissionDateDp.toggle()">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </span>
+                    </div>
+                    <div [hidden]="!(editForm.controls.submissionDate?.dirty && editForm.controls.submissionDate?.invalid)">
+                        <small class="form-text text-danger" [hidden]="!editForm.controls.submissionDate?.errors?.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_marshEmailbox">Marsh Emailbox</label>
+                    <input type="email" class="form-control" name="marshEmailbox" id="field_marshEmailbox" [(ngModel)]="uobCreditLimit.marshEmailbox"
+                        required/>
+                    <div [hidden]="!(editForm.controls.toLIS5Insurer?.dirty && editForm.controls.toLIS5Insurer?.invalid)">
+                        <small class="form-text text-danger" [hidden]="!editForm.controls.toLIS5Insurer?.errors?.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divGap"></div>
+
+        <div class="card" style="min-width: 20rem;">
+            <h4 class="card-header bg-primary text-white">Please issue us a Credit Limit Endorsement for</h4>
+            <div class="card-body">
+                <div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_discretiolaryLimitDL">Discretiolary Limit (DL)</label>
+                        <input type="checkbox" name="discretiolaryLimitDL" id="field_discretiolaryLimitDL" [(ngModel)]="uobCreditLimit.discretiolaryLimitDL"
+                        />
+                        <small>(Borrower I Borrower Group total facility limit S$ 1,000,000 and less; and CRR 1 -10)</small>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_creditLimitCL">Credit Limit (CL)</label>
+                        <input type="checkbox" name="creditLimitCL" id="field_creditLimitCL" [(ngModel)]="uobCreditLimit.creditLimitCL" />
+                        <small>(Borrower I Borrower Group total facility limit greater than S$ 1,000,000; and/or CRR 1 - 15)</small>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_limitToCancelNil">Limit to Cancel I Nil</label>
+                        <input type="checkbox" name="limitToCancelNil" id="field_limitToCancelNil" [(ngModel)]="uobCreditLimit.limitToCancelNil"
+                        />
+                        <small>Reason to cancel</small>
+                    </div>
+                </div>
+                <div>
+                    <div class="card-body">
+                        <h5>LIMIT TO BE ENDORSED</h5>
+                    </div>
+                    <table class="table table-hover">
+                        <tr>
+                            <td>
+                                <label>Total Facility Limit</label>
+                                <small>(after: Approved + New limit increase; or Approved - Decrease)</small>
+                            </td>
+                            <td>
+                                <small>(If applicable)</small> Currency</td>
+                            <td>
+                                <small>(Policy Currency)</small> Currency</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>We are now requesting for </label>
+                            </td>
+                            <td>
+                                <input type="number" id="usdCurrency" class="form-control" [(ngModel)]="uobCreditLimit.usdCurrency" />
+                            </td>
+                            <td>
+                                <input type="number" id="sgdCurrency" class="form-control" [(ngModel)]="uobCreditLimit.sgdCurrency" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>@ Currency Exchange Rate</label>
+                            </td>
+                            <td>
+                                <input type="number" id="currencyExchangeRate" class="form-control" [(ngModel)]="uobCreditLimit.currencyExchangeRate" />
+                            </td>
+                            <td>
+                                <label></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Total Facility Limit (Current)</label>
+                                <small>for Renewal / Increase / Decrease</small>
+                            </td>
+                            <td>
+                                <input type="number" id="usdCurrencyCurrent" class="form-control" [(ngModel)]="uobCreditLimit.usdCurrencyCurrent" />
+                            </td>
+                            <td>
+                                <input type="number" id="sgdCurrencyCurrent" class="form-control" [(ngModel)]="uobCreditLimit.sgdCurrencyCurrent" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Increase/Decrease LIS 4 or LIS 5</label>
+                            </td>
+                            <td>
+                                <input type="number" id="usdCurrencyCurrentLIS" class="form-control" [(ngModel)]="uobCreditLimit.usdCurrencyCurrentLIS" />
+                            </td>
+                            <td>
+                                <input type="number" id="sgdCurrencyCurrentLIS" class="form-control" [(ngModel)]="uobCreditLimit.sgdCurrencyCurrentLIS" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>IE LIS PLUS</label>
+                            </td>
+                            <td>
+                                <input type="number" id="usdCurrencyCurrentLISP" class="form-control" />
+                            </td>
+                            <td>
+                                <input type="number" id="sgdCurrencyCurrentLISL" class="form-control" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <div class="card-title">
+                        <h5>BORROWER TO BE ENDORSED</h5>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_rocRefNo">ROC Reference No</label>
+                        <input type="text" class="form-control" name="requesterName" id="field_rocRefNo" [(ngModel)]="uobCreditLimit.requesterName"
+                            required/>
+                        <div [hidden]="!(editForm.controls.rocRefNoTxt?.dirty && editForm.controls.rocRefNoTxt?.invalid)">
+                            <small class="form-text text-danger" [hidden]="!editForm.controls.requesterName?.errors?.required">
+                                This field is required.
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_borrowerRegName">Borrower's Registered Name</label>
+                        <input type="text" class="form-control" name="borrowerRegName" id="field_borrowerRegName" [(ngModel)]="uobCreditLimit.borrowerRegName"
+                            required/>
+                        <div [hidden]="!(editForm.controls.borrowerRegName?.dirty && editForm.controls.borrowerRegName?.invalid)">
+                            <small class="form-text text-danger" [hidden]="!editForm.controls.borrowerRegName?.errors?.required">
+                                This field is required.
+                            </small>
+                        </div>
+                    </div>
+                    <div>
+                        <h5>Borrower's CRR is </h5>
+                        <p>* Pricing for special mention/pplications may vary.</p>
+                        <h5>CRR and Premium Rate</h5>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <input type="checkbox" name="crr1to6" id="field_crr1to6" [(ngModel)]="uobCreditLimit.crr1to6" />
+                            <label class="form-control-label" for="field_crr1to6">CRR 1 to 6 : 1.375%</label>
+                            <div [hidden]="!(editForm.controls.crr1to6?.dirty && editForm.controls.crr1to6?.invalid)">
+                                <small class="form-text text-danger" [hidden]="!editForm.controls.crr1to6?.errors?.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="checkbox" name="crr7to10" id="field_crr7to10" [(ngModel)]="uobCreditLimit.crr7to10" />
+                            <label class="form-control-label" for="field_crr7to10">CRR 7 to 10 : 1.650%</label>
+                            <div [hidden]="!(editForm.controls.crr7to10?.dirty && editForm.controls.crr7to10?.invalid)">
+                                <small class="form-text text-danger" [hidden]="!editForm.controls.crr7to10?.errors?.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="checkbox" name="crr11to13" id="field_crr11to13" [(ngModel)]="uobCreditLimit.crr11to13" />
+                            <label class="form-control-label" for="field_crr11to13">CRR 11 to 13 : 1.925%</label>
+                            <div [hidden]="!(editForm.controls.crr11to13?.dirty && editForm.controls.crr11to13?.invalid)">
+                                <small class="form-text text-danger" [hidden]="!editForm.controls.crr11to13?.errors?.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <input type="checkbox" name="dCrr14to15" id="field_dCrr14to15" [(ngModel)]="uobCreditLimit.dCrr14to15" />
+                            <label class="form-control-label" for="field_dCrr14to15">CRR 14to 15 : 2.200%</label>
+                            <div [hidden]="!(editForm.controls.dCrr14to15?.dirty && editForm.controls.dCrr14to15?.invalid)">
+                                <small class="form-text text-danger" [hidden]="!editForm.controls.dCrr14to15?.errors?.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="checkbox" name="dNoCrr" id="field_dNoCrr" [(ngModel)]="uobCreditLimit.dNoCrr" />
+                            <label class="form-control-label" for="field_dNoCrr">No CRR : 1.925%</label>
+                            <div [hidden]="!(editForm.controls.dNoCrr?.dirty && editForm.controls.dNoCrr?.invalid)">
+                                <small class="form-text text-danger" [hidden]="!editForm.controls.dNoCrr?.errors?.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-title">
+                    <h5>For Borrower Group</h5>
+                    <p>If applicable</p>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" class="form-control-lable" name="forBorrowerGroup" id="exceptionalPricingTxt" [(ngModel)]="uobCreditLimit.exceptionalPricing"
+                    />
+                    <label class="form-control-label" for="field_exceptionalPricing">Exceptional pricing, where required</label>
+                    <input type="text" class="form-control" [(ngModel)]="uobCreditLimit.exceptionalPricing">
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label class="form-control-label" for="field_nameOfEntity">Name of Entity</label>
+                        <input type="text" class="form-control" name="nameOfEntity" id="field_nameOfEntity" [(ngModel)]="uobCreditLimit.nameOfEntity"
+                        />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-control-label" for="field_currentFacilityLimitAmount">Current Facility Limit Amount:</label>
+                        <input type="number" class="form-control" name="currentFacilityLimitAmount" id="field_currentFacilityLimitAmount" [(ngModel)]="uobCreditLimit.currentFacilityLimitAmount"
+                        />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label class="form-control-label" for="field_nameOfEntity2">Name of Entity:</label>
+                        <input type="text" class="form-control" name="nameOfEntity2" id="field_nameOfEntity2" [(ngModel)]="uobCreditLimit.nameOfEntity2"
+                        />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-control-label" for="field_currentFacilityLimitAmount2">Current Facility Limit Amount:</label>
+                        <input type="number" class="form-control" name="currentFacilityLimitAmount2" id="field_currentFacilityLimitAmount2" [(ngModel)]="uobCreditLimit.currentFacilityLimitAmount2"
+                        />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="divGap"></div>
+
+        <div class="card" style="min-width: 20rem;" #detailsOfLoan>
+            <h4 class="card-header bg-primary text-white">DETAILS OF LIS 5 LOAN</h4>
+            <div class="card-body">
+                <div>
+                    <div class="card-title">
+                        <h5>Type of Application</h5>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <input type="checkbox" name="newLIS" id="field_newLIS" [(ngModel)]="uobCreditLimit.newLIS" />
+                            <label class="form-control-label" for="field_newLIS">New</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="renewalAtSameAmount" id="field_renewalAtSameAmount" [(ngModel)]="uobCreditLimit.renewalAtSameAmount"
+                            />
+                            <label class="form-control-label" for="field_renewalAtSameAmount">Renewal at same amount</label>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <input type="checkbox" name="renewalFromSGD" id="field_renewalFromSGD" [(ngModel)]="uobCreditLimit.renewalFromSGD" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-control-label" for="field_renewalFromSGD">Renewal from SGD,</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="number" #renewalFromSGDTxt class="form-control" [(ngModel)]="uobCreditLimit.renewalFromSGDTxt">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-control-label" for="field_renewalToSGD">to SGD</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 offset-md-2">
+                                    <label class="form-control-label" for="field_renewalFromUSD">Renewal from USD</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="number" #renewalFromUSDTxt class="form-control" [(ngModel)]="uobCreditLimit.renewalFromUSDTxt">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-control-label " for="field_renewalToUSD">to USD</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <input type="checkbox" name="increaseLimitTo" id="field_increaseLimitTo" [(ngModel)]="uobCreditLimit.increaseLimitTo" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-control-label" for="field_increaseLimitToSGD">Increase Limit to: SGD</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="number" #increaseLimitSGD class="form-control" [(ngModel)]="uobCreditLimit.increaseLimitToSGD">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-control-label" for="field_increaseLimitToUSD">or USD</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="number" #increaseLimitUSD class="form-control" [(ngModel)]="uobCreditLimit.increaseLimitToUSD">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <input type="checkbox" name="decreaseLimitTo" id="field_decreaseLimitTo" [(ngModel)]="uobCreditLimit.decreaseLimitTo" />
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-control-label" for="field_decreaseLimitToSGD">Decrease Limit to SGD</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="number" #decreaseLimit class="form-control" [(ngModel)]="uobCreditLimit.decreaseLimitToSGD">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-control-label" for="field_decreaseLimitToUSD">or USD</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <input type="number" #decreaseLimitUSD class="form-control" [(ngModel)]="uobCreditLimit.decreaseLimitToUSD">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card-title">
+                            <h5>Facilities Applied and Amounts</h5>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <input type="checkbox" name="inventoryStockFinancing" id="field_inventoryStockFinancing" [(ngModel)]="uobCreditLimit.inventoryStockFinancing"
+                                />
+                                <label class="form-control-label" for="field_inventoryStockFinancing">Inventory/Stock Financing</label>
+
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="structuredPredeliveryWorkingCapital" id="field_structuredPredeliveryWorkingCapital" [(ngModel)]="uobCreditLimit.structuredPredeliveryWorkingCapital"
+                                />
+                                <label class="form-control-label" for="field_structuredPredeliveryWorkingCapital">Structured Pre-delivery Working Capital</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="withRecourseFactoringBill" id="field_withRecourseFactoringBill" [(ngModel)]="uobCreditLimit.withRecourseFactoringBill"
+                                />
+                                <label class="form-control-label" for="field_withRecourseFactoringBill">With Recourse: Factoring/Bill or Invoice/AR Discounting</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="overseasWorkingCapitalLoansSupport" id="field_overseasWorkingCapitalLoansSupport" [(ngModel)]="uobCreditLimit.overseasWorkingCapitalLoansSupport"
+                                />
+                                <label class="form-control-label" for="field_overseasWorkingCapitalLoansSupport">Overseas Working Capital Loans Support/Standby Letter of Credit</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="bankersGuaranteeAmount" id="field_bankersGuaranteeAmount" [(ngModel)]="uobCreditLimit.bankersGuaranteeAmount"
+                                />
+                                <label class="form-control-label" for="field_bankersGuaranteeAmount">Banker's Guarantee - Amount is</label>
+                                <input type="number" class="form-control" id="bankersGuaranteeAmountTxt" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label" for="field_tenureMonths">Tenure (Months) is SGD:</label>
+                                <input type="number" class="form-control" id="tenureMonthsTxt" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divGap"></div>
+        <div>
+            <h5>FOR BANK USE</h5>
+            <div class="form-group">
+                <label class="form-control-label" for="field_acceptanceDate">Letter of Offer Acceptance Date I Renewal Notification I Anniversary Date:</label>
+                <div class="input-group">
+                    <input id="field_acceptanceDate" type="text" class="form-control" name="acceptanceDate" ngbDatepicker #acceptanceDateDp="ngbDatepicker"
+                        [(ngModel)]="uobCreditLimit.acceptanceDate" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-secondary" (click)="acceptanceDateDp.toggle()">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+        <div class="divGap"></div>
+        <div>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+                <span class="fa fa-ban"></span>&nbsp;
+                <span>Cancel</span>
+            </button>
+            <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                <span class="fa fa-save"></span>&nbsp;
+                <span>Save</span>
+            </button>
+        </div>
+    </form>
+</div>

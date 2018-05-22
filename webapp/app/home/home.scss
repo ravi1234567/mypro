@@ -1,0 +1,144 @@
+
+/* ==========================================================================
+Main page styles
+========================================================================== */
+
+.hipster {
+    display: inline-block;
+    width: 347px;
+    height: 497px;
+    background: url("../../content/images/hipster.png") no-repeat center top;
+    background-size: contain;
+}
+
+/* wait autoprefixer update to allow simple generation of high pixel density media query */
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) {
+    .hipster {
+        background: url("../../content/images/hipster2x.png") no-repeat center top;
+        background-size: contain;
+    }
+}
+
+.feature-headline-1 {
+    background-color: rgb(78, 78, 80); border: 1px solid;
+    padding: 50px; color: white
+}
+
+.feature-headline-2 {
+    background-color: rgb(73, 28, 50); border: 1px solid;
+    padding: 50px; color: white
+}
+
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.panel-footer {
+    padding: 10px 15px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+.text-right {
+    text-align: right;
+}
+.pull-left {
+    float: left!important;
+}
+.pull-right {
+    float: right!important;
+}
+.panel .slidedown .glyphicon,
+.chat .glyphicon {
+  margin-right: 5px;
+}
+.chat-panel .panel-body {
+    height: 350px;
+    overflow-y: scroll;
+}
+.panel-green {
+    border-color: #5cb85c;
+}
+.panel-green > .panel-heading {
+    border-color: #5cb85c;
+    color: white;
+    background-color: #5cb85c;
+}
+  .panel-green > a {
+    color: #5cb85c;
+  }
+  .panel-green > a:hover {
+    color: #3d8b3d;
+  }
+  .panel-red {
+    border-color: #d9534f;
+  }
+  .panel-red > .panel-heading {
+    border-color: #d9534f;
+    color: white;
+    background-color: #d9534f;
+  }
+  .panel-red > a {
+    color: #d9534f;
+  }
+  .panel-red > a:hover {
+    color: #b52b27;
+  }
+  .panel-yellow {
+    border-color: #f0ad4e;
+  }
+  .panel-yellow > .panel-heading {
+    border-color: #f0ad4e;
+    color: white;
+    background-color: #f0ad4e;
+  }
+  .panel-yellow > a {
+    color: #f0ad4e;
+  }
+  .panel-yellow > a:hover {
+    color: #df8a13;
+  }
+  .panel-primary {
+    border-color: #337ab7;
+  }
+  
+  .panel-primary > .panel-heading {
+    border-color: #337ab7;
+    color: white;
+    background-color: #337ab7;
+  }
+  .panel-primary > a {
+    color: #337ab7;
+  }
+  .panel-primary > a:hover {
+    color: #337ab7;
+  }
+  .huge {
+    font-size: 40px;
+  }
+  .panel-default {
+    border-color: #333;
+  }
+  .panel-default>.panel-heading {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
+  @import '~bootstrap/scss/bootstrap.scss';

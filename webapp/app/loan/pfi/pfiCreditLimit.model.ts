@@ -1,0 +1,71 @@
+
+export class PFICreditLimit {
+    constructor(
+        public lisCoinsurer?: string,
+        public pfiName?: string,
+        public requestorName?: string,
+        public submissionDate?: Date,
+        public aCRArefNo?: string,
+        public regName?: string,
+        public totalReqLimit?: number,
+        public preShipmentApproval?: boolean,
+        public exRate?: number,
+        public foreignCurrency?: number,
+        public primary?: number,
+        public autoTopUp?: number,
+        public bg?: number,
+        public lisPlus?: number,
+        // public inventoryChkBx?: boolean,
+        // public workingCapChkBx?: boolean,
+        public factoringChkBx?: boolean,
+        public overseaseWorkingChkBx?:boolean,
+        // public bankersGuaranteeChkBx?:boolean,
+        // public tempIncreaseLimitChkBx?:boolean,
+        // public midTermIncreaseLimitChkBx?:boolean,
+        // public decreaseLimitChkBx?:boolean,
+        // public beforeMidTermIncreaseLimitChkBx?:boolean,
+        // public beforeDecreaseLimitChkBx?:boolean,
+        // public resourceFactoringChkBx?:boolean,
+        // public overseaseWorkingChkBx?:boolean,
+        // loanQuantumChkBx?:boolean,
+        // operatongTrackChkBx?:boolean,
+        // latestAuditChkBx?:boolean,
+        // auditedFinanceChkBx?:boolean,
+        // applicationChkBx?:boolean,
+        // bankersGuaranteeBChkBx?:boolean,
+        // guaranteeAmountChkBx?:boolean,
+        // guaranteeAmount2ChkBx?:boolean,
+        // bankersGuaranteeB2ChkBx?:boolean,
+        // principalChkBx?:boolean,
+        // lisSponsersApplChkBx?:boolean,
+        // companySearchesChkBx?:boolean,
+        // pfiInternalCreditChkBx?:boolean,
+        // latestAuditedChkBx?:boolean,
+        // latestSignedChkBx?:boolean,
+        // additionalItemChkBx?:boolean,
+        // forOverseasChkBx?:boolean,
+        // inventoryTxt?:string,
+        // workingCapTxt?: string,
+        // inventoryTradeTxt?: string,
+        // workingCapTxt?: string,
+        // resourceFactoringTxt?: string,
+        // additionalItemTxt?: string,
+        // beforeMidTermIncreaseLimitTxt?: string,
+        // decreaseLimitTxt?: string,
+        // beforeDecreaseLimitTxt?: string,
+        // borrowersGroup1Txt?: string,
+        // borrowersGroup2Txt?: string,
+        // tempIncreaseLimitChkBxTxt?: string,
+        // midTermIncreaseLimitTxt?: string,
+        // tempIncreaseLimitChkBxTxt?: string,
+        // bankersGuaranteeTxt?: string,
+        // overseaseWorkingTxt?: string
+        
+
+    ) {
+        // this.preShipmentApproval = false;
+        // this.inventoryChkBx = false;
+        // this.workingCapChkBx = false;
+        // this.factoringChkBx = false;
+    }
+}

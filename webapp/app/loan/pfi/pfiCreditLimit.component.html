@@ -1,0 +1,607 @@
+<div class="container">
+    <div class="text-center">
+        <h1>MARSH LIS 5 CREDIT LIMIT REQUEST FORM</h1>
+    </div>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm" show-validation>
+
+        <div class="card" style="min-width: 20rem;">
+            <h4 class="card-header bg-primary text-white">Primary Info</h4>
+            <div class="card-body">
+                <div class="card-title">
+                    <h3>IMPORTANT NOTE (You must read this.)</h3>
+                    <span>The following is the Insured’s instructions to request for insurance coverage on the Borrower. Once the
+                        limit has been approved by the Insurers, the Insured will be bound by the LIS 5 policy terms and
+                        conditions.
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label">To LIS5 Co-Insurers</label>
+                    <input type="text" class="form-control" name="lisCoinsurer" id="field_lisCoinsurer" required readonly [(ngModel)]="pfiCreditLimit.lisCoinsurer"
+                        value="Coface,Ace,Tokio Marine Kiln and Tokio Marine Insurance Singapore
+                                   (via Program Manager - Marsh)" />
+                    <div [hidden]="!(editForm.controls.lisCoinsurer?.dirty && editForm.controls.lisCoinsurer?.invalid)">
+                        <small class="form-text text-danger" [hidden]="!editForm.controls.lisCoinsurer?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label">PFI Name</label>
+                    <input type="text" class="form-control" name="pfiName" id="field_pfiName" required [(ngModel)]="pfiCreditLimit.pfiName" placeholder="The Insured"
+                    />
+                    <div [hidden]="!(editForm.controls.pfiName?.dirty && editForm.controls.pfiName?.invalid)">
+                        <small class="form-text text-danger" [hidden]="!editForm.controls.pfiName?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label">Requestor Name</label>
+                    <input type="text" class="form-control" name="requestorName" id="field_requestorName" [(ngModel)]="pfiCreditLimit.requestorName"
+                        required/>
+                    <div [hidden]="!(editForm.controls.requestorName?.dirty && editForm.controls.requestorName?.invalid)">
+                        <small class="form-text text-danger" [hidden]="!editForm.controls.requestorName?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label">Submission Date</label>
+                    <div class="input-group">
+                        <input id="field_submissionDate" type="date" class="form-control" name="submissionDate" ngbDatepicker #submissionDateDp="ngbDatepicker"
+                            [(ngModel)]="pfiCreditLimit.submissionDate" placeholder="Please indicate actual date of submission"
+                        />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-secondary" (click)="submissionDateDp.toggle()">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <h3>Instructions For Completing The Form</h3>
+                <p>To avoid delay in processing your request, please write/type in a clear and legible manner for all sections
+                    below.
+                </p>
+                <h3>BORROWER DETAILS TO BE ENDORSED BY INSURERS (Compulsory field)</h3>
+                <div class="form-group">
+                    <label class="form-control-label">ACRA Reference No.</label>
+                    <input type="text" class="form-control" name="aCRArefNo" id="field_aCRArefNo" [(ngModel)]="pfiCreditLimit.aCRArefNo" required/>
+                    <div [hidden]="!(editForm.controls.aCRArefNo?.dirty && editForm.controls.aCRArefNo?.invalid)">
+                        <small class="form-text text-danger" [hidden]="!editForm.controls.aCRArefNo?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_regName">Borrower’s Registered Name</label>
+                    <input type="text" class="form-control" name="regName" id="field_regName" [(ngModel)]="pfiCreditLimit.regName" required/>
+                    <div [hidden]="!(editForm.controls.regName?.dirty && editForm.controls.regName?.invalid)">
+                        <small class="form-text text-danger" [hidden]="!editForm.controls.regName?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <h3>DETAILS OF OUR REQUEST (Compulsory field)</h3>
+                <p>We wish to request for a Credit Limit Endorsement under Discretionary Limit if it is still available. Please
+                    confirm to us if this is granted under Discretionary Limit (DL) or Credit Limit (CL). (If Section 2 is
+                    not completed, this shall automatically be deemed as a CL request.)</p>
+
+                <div class="form-group">
+                    <p>Pre-shipment approval is required. We attach herein: List of supplier(s) approved internally by our (PFI’s)
+                        management and the required basic information.</p>
+                    <label class="form-control-label" for="field_preShipmentApproval">Total Requested Limit : SGD 698,400</label>
+                    <input type="checkbox" class="checkbox" name="preShipmentApproval" id="field_preShipmentApproval" [(ngModel)]="pfiCreditLimit.preShipmentApproval"
+                    />
+
+                    <div [hidden]="!(editForm.controls.preShipmentApproval?.dirty && editForm.controls.preShipmentApproval?.invalid)">
+                        <small class="form-text text-danger" [hidden]="!editForm.controls.preShipmentApproval?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div>
+                    <h3>Optional</h3>
+                    <span>Please complete only if you require it)</span>
+                    <p>Please provide us the Credit Limit endorsement in Foreign Currency amount.</p>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label class="form-control-label" for="field_exRate">Exchange rate *</label>
+                        <input type="number" class="form-control" name="exRate" id="field_exRate" [(ngModel)]="pfiCreditLimit.exRate" />
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label class="form-control-label" for="field_foreignCurrency">Foreign Currency Amount to endorse *</label>
+                        <input type="number" class="form-control" name="foreignCurrency" id="field_foreignCurrency" [(ngModel)]="pfiCreditLimit.foreignCurrency"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divGap"></div>
+        <div class="card" style="min-width: 20rem;">
+            <h4 class="card-header bg-primary text-white">SECTION 1 – LIMIT REQUIREMENTS</h4>
+            <div class="card-body">
+                <h5 class="card-title">For Existing LIS 5 Limits</h5>
+                <section id="section1">
+                    <p>If applicable</p>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label class="form-control-label" for="field_primary">Primary</label>
+                            <input type="number" class="form-control" name="primary" id="field_primary" [(ngModel)]="pfiCreditLimit.primary" />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label class="form-control-label" for="field_autoTopUp">Auto Top-up</label>
+                            <input type="number" class="form-control" name="autoTopUp" id="field_autoTopUp" [(ngModel)]="pfiCreditLimit.autoTopUp" />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label class="form-control-label" for="field_bg">BG</label>
+                            <input type="number" class="form-control" name="bg" id="field_bg" [(ngModel)]="pfiCreditLimit.bg" />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label class="form-control-label" for="field_lisPlus">LISPLUS</label>
+                            <input type="number" class="form-control" name="lisPlus" id="field_lisPlus" [(ngModel)]="pfiCreditLimit.lisPlus" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <h5>LIS 5 Trade Facilitie</h5>
+                        <small>Compulsory field</small>
+                        <div class="form-group">
+
+                            <input type="checkbox" name="inventoryChkBx" id="field_inventoryChkBx" [(ngModel)]="pfiCreditLimit.inventoryChkBx" />
+                            <label class="form-control-label" for="field_inventoryChkBx">Inventory / Stock Financing $</label>
+                            <input type="text" id="field_inventoryTxt" [(ngModel)]="pfiCreditLimit.inventoryTxt" />
+                            <div [hidden]="!(editForm.controls.inventoryChkBx?.dirty && editForm.controls.inventoryChkBx?.invalid)">
+                                <small class="form-text text-danger" [hidden]="!editForm.controls.inventoryChkBx?.errors?.required" jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="workingCapChkBx" id="field_workingCapChkBx" [(ngModel)]="pfiCreditLimit.workingCapChkBx" />
+                            <label class="form-control-label" for="field_workingCapChkBx">Structured Pre-delivery Working Capital $</label>
+                            <input type="text" id="field_workingCapTxt" [(ngModel)]="pfiCreditLimit.workingCapTxt" />
+                            <div [hidden]="!(editForm.controls.workingCapChkBx?.dirty && editForm.controls.workingCapChkBx?.invalid)">
+                                <small class="form-text text-danger" [hidden]="!editForm.controls.workingCapChkBx?.errors?.required" jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="factoringChkBx" id="field_factoringChkBx" [(ngModel)]="pfiCreditLimit.factoringChkBx" />
+                            <label class="form-control-label" for="field_factoringChkBx">With Recourse for: Factoring / Bill or Invoice / AR Discounting $</label>
+                            <input type="text" id="field_factoringTxt" [(ngModel)]="pfiCreditLimit.factoringTxt" />
+                            <div [hidden]="!(editForm.controls.factoringChkBx?.dirty && editForm.controls.factoringChkBx?.invalid)">
+                                <small class="form-text text-danger" [hidden]="!editForm.controls.factoringChkBx?.errors?.required" jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="checkbox" name="overseaseWorkingChkBx" id="field_overseaseWorkingChkBx" [(ngModel)]="pfiCreditLimit.overseaseWorkingChkBx" />
+                            <label class="form-control-label" for="field_overseaseWorkingChkBx">Overseas Working Capital Loans Support (via Standby Letter of Credit) $</label>
+                            <input type="text" id="field_overseaseWorkingTxt" [(ngModel)]="pfiCreditLimit.overseaseWorkingTxt" />
+                            <p>NOTE:Note: PFI needs to obtain IE’s prior approval and attach to this submission to the Insurers
+                                and Sponsors. SPRING’s Application Form is also required.</p>
+                            <div [hidden]="!(editForm.controls.overseaseWorkingChkBx?.dirty && editForm.controls.overseaseWorkingChkBx?.invalid)">
+                                <small class="form-text text-danger" [hidden]="!editForm.controls.field_overseaseWorkingChkBx?.errors?.required" jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="checkbox" name="bankersGuaranteeChkBx" id="field_bankersGuaranteeChkBx" [(ngModel)]="pfiCreditLimit.bankersGuaranteeChkBx" />
+                            <label class="form-control-label" for="field_bankersGuarantee">Banker’s Guarantee (BG)</label>
+                            <input type="text" id="field_bankersGuaranteeTxt" [(ngModel)]="pfiCreditLimit.bankersGuaranteeTxt" />
+                            <p>When applying for this facility, it must be tied to one of the above LIS 5 Trade Facilities,
+                                and not to exceed 50% of the Primary Approved Limit.</p>
+                            <p>NOTE: BG tenure would be up to 24 months, plus 6-month Claim Period, if required. BG premium
+                                is charged upfront at 12 months. Pro-rata premium will be charged if BG period exceeds 12
+                                months as per PFI’s subsequent declarations.</p>
+                            <div [hidden]="!(editForm.controls.bankersGuaranteeChkBx?.dirty && editForm.controls.bankersGuaranteeChkBx?.invalid)">
+                                <small class="form-text text-danger" [hidden]="!editForm.controls.bankersGuaranteeChkBx?.errors?.required" jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+                        <div>
+                            <h5>Request Type</h5>
+                            <small>If Applicable</small>
+                            <h6>After Initial Letter of Offer Acceptance (Utilised)</h6>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="tempIncreaseLimitChkBx" id="field_tempIncreaseLimitChkBx" [(ngModel)]="pfiCreditLimit.tempIncreaseLimitChkBx"
+                            />
+                            <label class="form-control-label" for="field_tempIncreaseLimitChkBx">TEMP - Increase Limit amounting to $</label>
+                            <input type="text" id="field_tempIncreaseLimitChkBxTxt" [(ngModel)]="pfiCreditLimit.tempIncreaseLimitTxt" />
+                            <p>Note: Temporary Limit not to exceed 25% of existing Primary Limit. The Auto Top-up, BG and LIS
+                                PLUS limits are to be excluded before you compute the 25% cap.</p>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="midTermIncreaseLimitChkBx" id="field_midTermIncreaseLimitChkBx" [(ngModel)]="pfiCreditLimit.midTermIncreaseLimitChkBx"
+                            />
+                            <label class="form-control-label" for="field_midTermIncreaseLimitChkBx">MID-TERM - Increase Limit amounting to $</label>
+                            <input type="text" id="field_midTermIncreaseLimitTxt" [(ngModel)]="pfiCreditLimit.midTermIncreaseLimitTxt" />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="checkbox" name="decreaseLimitChkBx" id="field_decreaseLimitChkBx" [(ngModel)]="pfiCreditLimit.decreaseLimitChkBx"
+                            />
+                            <label class="form-control-label" for="field_decreaseLimitChkBx">Decrease Limit amounting to $</label>
+                            <input type="text" id="field_decreaseLimitTxt" [(ngModel)]="pfiCreditLimit.decreaseLimitTxt" />
+                        </div>
+                        <div>
+                            <h6>Before Initial Letter of Offer Acceptance (Not Utilised)</h6>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="beforeMidTermIncreaseLimitChkBx" id="field_beforeMidTermIncreaseLimitChkBx" [(ngModel)]="pfiCreditLimit.beforeMidTermIncreaseLimitChkBx"
+                            />
+                            <label class="form-control-label" for="field_beforeMidTermIncreaseLimitChkBx">MID-TERM - Increase Limit amounting to $</label>
+                            <input type="text" id="field_beforeMidTermIncreaseLimitTxt" [(ngModel)]="pfiCreditLimit.beforeMidTermIncreaseLimitTxt" />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="checkbox" name="decreaseLimitChkBx" id="field_beforeDecreaseLimitChkBx" [(ngModel)]="pfiCreditLimit.beforeDecreaseLimitChkBx"
+                            />
+                            <label class="form-control-label" for="field_beforeDecreaseLimitChkBx">Decrease Limit amounting to $</label>
+                            <input type="text" id="field_beforeDecreaseLimitTxt" [(ngModel)]="pfiCreditLimit.beforeDecreaseLimitTxt" />
+                        </div>
+                    </div>
+                    <div>
+                        <h5>LIS 5 Trade Facilitie</h5>
+                        <small>Compulsory field</small>
+                        <div class="form-group">
+
+                            <input type="checkbox" name="inventoryChkBx" id="field_inventoryTradeChkBx" [(ngModel)]="pfiCreditLimit.inventoryTradeChkBx"
+                            />
+                            <label class="form-control-label" for="field_inventoryChkBx">Inventory / Stock Financing $</label>
+                            <input type="text" id="field_inventoryTradeTxt" [(ngModel)]="pfiCreditLimit.inventoryTradeTxt" />
+                            <div [hidden]="!(editForm.controls.inventoryTradeChkBx?.dirty && editForm.controls.inventoryTradeChkBx?.invalid)">
+                                <small class="form-text text-danger" [hidden]="!editForm.controls.inventoryTradeChkBx?.errors?.required" jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="workingCapChkBx" id="field_workingCapChkBx" [(ngModel)]="pfiCreditLimit.workingCapChkBx" />
+                            <label class="form-control-label" for="field_workingCapChkBx">Structured Pre-delivery Working Capital $</label>
+                            <input type="text" id="field_workingCapTxt" [(ngModel)]="pfiCreditLimit.workingCapTxt" />
+                            <div [hidden]="!(editForm.controls.workingCapChkBx?.dirty && editForm.controls.workingCapChkBx?.invalid)">
+                                <small class="form-text text-danger" [hidden]="!editForm.controls.workingCapChkBx?.errors?.required" jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="resourceFactoringChkBx" id="field_resourceFactoringChkBx" [(ngModel)]="pfiCreditLimit.resourceFactoringChkBx"
+                            />
+                            <label class="form-control-label" for="field_resourceFactoringChkBx">With Recourse for: Factoring / Bill or Invoice / AR Discounting $</label>
+                            <input type="text" id="field_resourceFactoringTxt" [(ngModel)]="pfiCreditLimit.resourceFactoringTxt" />
+                            <div [hidden]="!(editForm.controls.resourceFactoringChkBx?.dirty && editForm.controls.resourceFactoringChkBx?.invalid)">
+                                <small class="form-text text-danger" [hidden]="!editForm.controls.resourceFactoringChkBx?.errors?.required" jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="checkbox" name="factoringChkBx" id="field_overseaseWorkingChkBx" [(ngModel)]="pfiCreditLimit.overseaseWorkingChkBx"
+                            />
+                            <label class="form-control-label" for="field_overseaseWorkingChkBx">Overseas Working Capital Loans Support (via Standby Letter of Credit) $</label>
+                            <input type="text" id="field_overseaseWorkingTxt" [(ngModel)]="pfiCreditLimit.overseaseWorkingTxt" />
+                            <p>NOTE:Note: PFI needs to obtain IE’s prior approval and attach to this submission to the Insurers
+                                and Sponsors. SPRING’s Application Form is also required.</p>
+                            <div [hidden]="!(editForm.controls.field_overseaseWorkingChkBx?.dirty && editForm.controls.overseaseWorkingChkBx?.invalid)">
+                                <small class="form-text text-danger" [hidden]="!editForm.controls.field_overseaseWorkingChkBx?.errors?.required" jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="checkbox" name="bankersGuaranteeChkBx" id="field_bankersGuaranteeChkBx" [(ngModel)]="pfiCreditLimit.bankersGuaranteeChkBx"
+                            />
+                            <label class="form-control-label" for="field_bankersGuarantee">Banker’s Guarantee (BG)</label>
+                            <input type="text" id="field_bankersGuaranteeTxt" [(ngModel)]="pfiCreditLimit.bankersGuaranteeTxt" />
+                            <small>When applying for this facility, it must be tied to one of the above LIS 5 Trade Facilities,
+                                and not to exceed 50% of the Primary Approved Limit.</small>
+                            <p>NOTE: BG tenure would be up to 24 months, plus 6-month Claim Period, if required. BG premium
+                                is charged upfront at 12 months. Pro-rata premium will be charged if BG period exceeds 12
+                                months as per PFI’s subsequent declarations.</p>
+                            <div [hidden]="!(editForm.controls.bankersGuaranteeChkBx?.dirty && editForm.controls.bankersGuaranteeChkBx?.invalid)">
+                                <small class="form-text text-danger" [hidden]="!editForm.controls.bankersGuaranteeChkBx?.errors?.required" jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+                        <div>
+                            <h5>Request Type</h5>
+                            <small>If Applicable</small>
+                            <h6>After Initial Letter of Offer Acceptance (Utilised)</h6>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="tempIncreaseLimitChkBx" id="field_tempIncreaseLimitChkBx" [(ngModel)]="pfiCreditLimit.tempIncreaseLimitChkBx"
+                            />
+                            <label class="form-control-label" for="field_tempIncreaseLimitChkBx">TEMP - Increase Limit amounting to $</label>
+                            <input type="text" id="field_tempIncreaseLimitChkBxTxt" [(ngModel)]="pfiCreditLimit.tempIncreaseLimitChkBxTxt" />
+                            <p>Note: Temporary Limit not to exceed 25% of existing Primary Limit. The Auto Top-up, BG and LIS
+                                PLUS limits are to be excluded before you compute the 25% cap.</p>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="midTermIncreaseLimitChkBx" id="field_midTermIncreaseLimitChkBx" [(ngModel)]="pfiCreditLimit.midTermIncreaseLimitChkBx"
+                            />
+                            <label class="form-control-label" for="field_midTermIncreaseLimitChkBx">MID-TERM - Increase Limit amounting to $</label>
+                            <input type="text" id="field_midTermIncreaseLimitTxt" [(ngModel)]="pfiCreditLimit.midTermIncreaseLimitTxt" />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="checkbox" name="decreaseLimitChkBx" id="field_decreaseLimitChkBx" [(ngModel)]="pfiCreditLimit.decreaseLimitChkBx"
+                            />
+                            <label class="form-control-label" for="field_decreaseLimitChkBx">Decrease Limit amounting to $</label>
+                            <input type="text" id="field_decreaseLimitTxt" [(ngModel)]="pfiCreditLimit.decreaseLimitTxt" />
+                        </div>
+                        <div>
+                            <h6>Before Initial Letter of Offer Acceptance (Not Utilised)</h6>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="beforeMidTermIncreaseLimitChkBx" id="field_beforeMidTermIncreaseLimitChkBx" [(ngModel)]="pfiCreditLimit.beforeMidTermIncreaseLimitChkBx"
+                            />
+                            <label class="form-control-label" for="field_beforeMidTermIncreaseLimitChkBx">MID-TERM - Increase Limit amounting to $</label>
+                            <input type="text" id="field_beforeMidTermIncreaseLimitTxt" [(ngModel)]="pfiCreditLimit.beforeMidTermIncreaseLimitTxt" />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="checkbox" name="decreaseLimitChkBx" id="field_beforeDecreaseLimitChkBx" [(ngModel)]="pfiCreditLimit.beforeDecreaseLimitChkBx"
+                            />
+                            <label class="form-control-label" for="field_beforeDecreaseLimitChkBx">Decrease Limit amounting to $</label>
+                            <input type="text" id="field_beforeDecreaseLimitTxt" [(ngModel)]="pfiCreditLimit.beforeDecreaseLimitTxt" />
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+        <div class="divGap"></div>
+        <div class="card" style="min-width: 20rem;">
+            <h4 class="card-header bg-primary text-white">SECTION 2 – DISCRETIONARY LIMIT SUBMISSION</h4>
+            <div class="card-body">
+                <h4 class="card-title">
+                    <p>DL is defined as a combined SGD2.25 Million at Primary Layer per Borrower Group (#2) in aggregate across
+                        all PFIs, in the LIS 5 programme under Marsh of which:</p>
+                </h4>
+                <section id="section2" class="card-text">
+                    <ol type="a">
+                        <li>
+                            A maximum of SGD1.50 Million for Trade Facilities (excluding Banker’s Guarantees) and
+                        </li>
+                        <li>
+                            A maximum of SGD0.75 Million or 50% of the above trade limit, whichever is lower, for Banker’s Guarantees
+                        </li>
+                    </ol>
+
+                    <div id="discretionaryLimitA">
+                        <h3>We confirm below DL criteria has been met by the above Borrower:</h3>
+                        <div class="form-group">
+                            <input type="checkbox" name="loanQuantumChkBx" id="field_loanQuantumChkBx" [(ngModel)]="pfiCreditLimit.loanQuantumChkBx"
+                            />
+                            <label class="form-control-label" for="field_loanQuantumChkBx">Loan quantum is equal or less than 3x Borrower’s positive
+                                <b>Net Worth (#1)</b>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="operatongTrackChkBx" id="field_operatongTrackChkBx" [(ngModel)]="pfiCreditLimit.operatongTrackChkBx"
+                            />
+                            <label class="form-control-label" for="field_operatongTrackChkBx">Operating track record, at least 2 years with 1 year’s fully audited financials or 1 year’s management
+                                accounts (signed-off by authorized directors) if the Borrower is not required to prepare
+                                audited financials</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="latestAuditChkBx" id="field_latestAuditChkBx" [(ngModel)]="pfiCreditLimit.latestAuditChkBx"
+                            />
+                            <label class="form-control-label" for="field_latestAuditChkBx">Latest Audited Financials/Signed Management Accounts exhibit positive Net Profit Before Tax (NPBT)</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="auditedFinanceChkBx" id="field_auditedFinanceChkBx" [(ngModel)]="pfiCreditLimit.auditedFinanceChkBx"
+                            />
+                            <label class="form-control-label" for="field_loanQuantumChkBx">Audited financials or signed management accounts that are more than 6 months old at the time
+                                of application, must be accompanied by recent signed management accounts</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="applicationChkBx" id="field_applicationChkBx" [(ngModel)]="pfiCreditLimit.applicationChkBx"
+                            />
+                            <label class="form-control-label" for="field_applicationChkBx">Application is accompanied by the most recent copy of ACRA search</label>
+                        </div>
+                        <div>
+                            <p>
+                                <b>Note: If your application does not fulfil the above criteria, the Insurers will process this
+                                    as a Credit Limit request instead. Re-submission of request as a CL is not required.</b>
+                            </p>
+                            <p>
+                                <b>#1 Net Worth = </b>Aggregate of paid-up capital + Retained earnings
+                            </p>
+                            <p>
+                                <b>#2 Borrower Group</b> refers to entities that are majority-owned (that is, more than > 50%)
+                                by the same shareholders as the Borrower
+                            </p>
+                            <p>
+                                If Borrower is part of a
+                                <b>Borrower Group (#2)</b>, please list all the entities within the Borrower Group. (please
+                                enclose the Borrower’s company search & Enhanced Individual Search on the directors / shareholders)
+                            </p>
+
+                            <div class="form-group">
+                                <label class="form-control-label" for="field_borrowersGroup1">1</label>
+                                <input type="text" id="field_borrowersGroup1Txt" [(ngModel)]="pfiCreditLimit.borrowersGroup1Txt" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label" for="field_borrowersGroup2">1</label>
+                                <input type="text" id="field_borrowersGroup2Txt" [(ngModel)]="pfiCreditLimit.borrowersGroup2Txt" />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="discretionaryLimitB">
+                        <h3>b) If there are Bank Guarantee (BG) requirements, we confirm below criteria has also been met by
+                            the above Borrower</h3>
+                        <div class="form-group">
+                            <input type="checkbox" name="bankersGuaranteeBChkBx" id="field_bankersGuaranteeB" [(ngModel)]="pfiCreditLimit.bankersGuaranteeBChkBx"
+                            />
+                            <label class="form-control-label" for="field_bankersGuaranteeB">Banker’s Guarantee tenure would be up to 24 months plus up to a maximum 6-month Claim Period
+                                (if required)</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="guaranteeAmountChkBx" id="field_guaranteeAmount" [(ngModel)]="pfiCreditLimit.guaranteeAmountChkBx"
+                            />
+                            <label class="form-control-label" for="field_guaranteeAmount">Guarantee Amount per Banker’s Guarantee does not exceed $100,000.00</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="guaranteeAmount2ChkBx" id="field_guaranteeAmount2" [(ngModel)]="pfiCreditLimit.guaranteeAmount2ChkBx"
+                            />
+                            <label class="form-control-label" for="field_guaranteeAmount2">Guarantee Amount per Banker’s Guarantee cannot be more than 20% of the contract value for construction
+                                related projects</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="bankersGuaranteeB2ChkBx" id="field_bankersGuaranteeB2ChkBx" [(ngModel)]="pfiCreditLimit.bankersGuaranteeB2ChkBx"
+                            />
+                            <label class="form-control-label" for="field_bankersGuaranteeB2ChkBx">Banker’s Guarantee wordings shall not be open-dated</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="principalChkBx" id="field_principalChkBx" [(ngModel)]="pfiCreditLimit.principalChkBx" />
+                            <label class="form-control-label" for="field_principalChkBx">Principal or Beneficiary is a Singapore entity and subject to Singapore law and jurisdiction</label>
+                        </div>
+                        <div>
+                            <p>
+                                <b>Note: If your application does not fulfil the above criteria, the Insurers will process this
+                                    as a Credit Limit request instead. Re-submission of request as a CL is not required.</b>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="divGap"></div>
+        <div class="card" style="min-width: 20rem;">
+            <h4 class="card-header bg-primary text-white">SECTION 3 – REQUIRED SUBMISSION DOCUMENTS</h4>
+            <div class="card-body">
+                <section id="section3" class="card-text">
+                    <p>Please find enclosed the following documents for your underwriting with this request:</p>
+                    <small>(Attached files should be in PDF, Word or Excel formats only to avoid potential blocks by antivirus scan
+                        of emails.)</small>
+                    <h3>Please tick below boxes appropriately</h3>
+                    <div class="form-group">
+                        <input type="checkbox" name="lisSponsersApplChkBx" id="field_lisSponsersApplChkBx" [(ngModel)]="pfiCreditLimit.lisSponsersApplChkBx"
+                        />
+                        <label class="form-control-label" for="field_lisSponsersApplChkBx">LIS 5 Sponsors’ Application Form (electronically validated copy);</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="companySearchesChkBx" id="field_companySearchesChkBx" [(ngModel)]="pfiCreditLimit.companySearchesChkBx"
+                        />
+                        <label class="form-control-label" for="field_companySearchesChkBx">Company searches and/or individual searches;</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="pfiInternalCreditChkBx" id="field_pfiInternalCreditChkBx" [(ngModel)]="pfiCreditLimit.pfiInternalCreditChkBx"
+                        />
+                        <label class="form-control-label" for="field_pfiInternalCreditChkBx">PFI’s internal Credit Memo Approval (not recommendation);</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="latestAuditedChkBx" id="field_latestAuditedChkBx" class="form-control" [(ngModel)]="pfiCreditLimit.latestAuditedChkBx"
+                        />
+                        <label class="form-control-label" for="field_latestAuditedChkBx">Latest Audited Financials from Borrower as on</label>
+                        <div class="input-group">
+                            <input type="date" #latestAuditedDate="ngbDatepicker" ngbDatepicker class="form-control" placeholder="Please select date"
+                            />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-secondary" (click)="latestAuditedDate.toggle()">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="latestSignedChkBx" id="field_latestSignedChkBx" [(ngModel)]="pfiCreditLimit.latestSignedChkBx"
+                        />
+                        <label class="form-control-label" for="field_latestSignedChkBx">and /or Latest signed Management Accounts from Borrower as on</label>
+                        <div class="input-group">
+                            <input type="date" #latestSignedDate="ngbDatepicker" ngbDatepicker class="form-control" placeholder="Please select date"
+                            />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-secondary" (click)="latestSignedDate.toggle()">
+                                    <i class="fa fa-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="additionalItemChkBx" id="field_additionalItemChkBx" [(ngModel)]="pfiCreditLimit.additionalItemChkBx"
+                        />
+                        <label class="form-control-label" for="field_additionalItemChkBx">Additional Items</label>
+                        <input type="text" id="field_additionalItemTxt" [(ngModel)]="pfiCreditLimit.additionalItemTxt" />
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="forOverseasChkBx" id="field_forOverseasChkBx" [(ngModel)]="pfiCreditLimit.forOverseasChkBx"
+                        />
+                        <label class="form-control-label" for="field_forOverseasChkBx">For Overseas Working Capital Loans Support facility, please attach IE’s email approval</label>
+                    </div>
+                    <div>
+                        <p>
+                            <b>
+                                Note: Items marked asterisk (*) are compulsory items for submission to Insurers. Your request will not be sent to the Insurers
+                                if all the items are not received from you. The agreed turnaround time of 5 working days
+                                from the Submission Date in COFANET, will not begin counting for your request. Limit requests
+                                with incomplete attachment of documents will be cancelled by the Insurers in COFANET
+                            </b>
+                        </p>
+                    </div>
+            </div>
+            </section>
+        </div>
+        <div class="divGap"></div>
+        <div class="card" style="min-width: 20rem;">
+            <h4 class="card-header bg-primary text-white">IMPORTANT NOTE ON ELIGIBILITY CRITERIA</h4>
+            <div class="card-body">
+                <section id="sectionImpNote">
+                    <div>
+                        <p>
+                            <ol type="A">
+                                <li>The Lender (that is, PFI) shall be responsible for ensuring that the Borrowers fulfil the
+                                    eligibility criteria specified for LIS 5 based on the Borrower’s declaration at application,
+                                    and where information on the eligibility criteria is available on ACRA the Lender should
+                                    verify the information against the Borrower’s declaration, for the respective Insured
+                                    Loan.
+                                </li>
+                                <li>
+                                    For Borrowers which do not meet the LIS 5 Eligibility Criteria at application, please do not submit a limit request for them
+                                    as premium subsidy and insurance coverage are not applicable to them.
+                                </li>
+                                <li>
+                                    LIS 5 Sponsors’ Application Form – Form completion in full and with accuracy by Borrower is required for
+                                    <u>New, Renewal and Increase Limit cases.</u>
+                                </li>
+                            </ol>
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="divGap"></div>
+        <div>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+                <span class="fa fa-ban"></span>&nbsp;
+                <span>Cancel</span>
+            </button>
+            <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                <span class="fa fa-save"></span>&nbsp;
+                <span>Save as draft</span>
+            </button>
+        </div>
+
+    </form>
+</div>
